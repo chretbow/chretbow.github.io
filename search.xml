@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[[Git]TortoiseGit]]></title>
+    <url>%2F2019%2F06%2F15%2FGit-TortoiseGit%2F</url>
+    <content type="text"><![CDATA[TortoiseGit是用來使用GitHub版本控管功能的工具，下面簡單介紹安裝過程和如何Clone Code。 安裝Git for Windows 先到官網下載Git for Windows官網 直接按下一步，安裝完成 安裝TortoiseGit 一樣先到官網下載TortoiseGit官網 也是直接下一步，安裝完成 使用方式 先到GitHub複製網址 到資料夾按右鍵 開始Clone 這樣就可以開始改Code了]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Docker]Docker for Windows 10]]></title>
+    <url>%2F2019%2F04%2F29%2FDocker-Docker-for-Windows-10%2F</url>
+    <content type="text"><![CDATA[Docker必須跑在Linux上，若想要在Windows上跑Docker，就要利用Hyper-V跑一個Linux，如此就可以在Windows上跑Docker 必要條件 Windows10 專業版或企業版(版本 1607年） HYPER-V已啟用 輸入commend: systeminfo，檢查是否啟用，若都為”是”，則可以使用 若沒啟用可到程式與功能–&gt;開啟或關閉Windows功能–&gt;勾選Hyper-V確定安裝，並重啟電腦 安裝Docker for Windows 下載Docker Desktop for Windows(需註冊docker hub帳號)Docker Desktop for Windows 安裝完成 可以切換Windows Containers，不過我們還是先玩玩Linux Containers就行了 測試安裝是否正常 Run docker –version 看Docker版本 1&gt; docker --version Docker version 18.09.2, build 6247962 從 Docker Hub 拉取 hello-world image，並Run容器 1&gt; docker pull hello-world Using default tag: latestlatest: Pulling from library/hello-world1b930d010525: Pull completeDigest: sha256:92695bc579f31df7a63da6922075d0666e565ceccad16b59c3374d2cf4e8e50eStatus: Downloaded newer image for hello-world:latest 1&gt; docker run hello-world Hello from Docker!This message shows that your installation appears to be working correctly. docker 基本指令 image list 1docker image ls container list 1docker container ls --all 將沒有使用的container 刪除 1docker system prune 移除Image 1docker image rm hello-world 各層級Help 1234&gt; docker --help&gt; docker container --help&gt; docker container ls --help&gt; docker run --help 參考網址Docker Desktop for WindowsDocker Desktop for Windows]]></content>
+      <tags>
+        <tag>Docker</tag>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Tools]AutoMapper]]></title>
+    <url>%2F2019%2F04%2F24%2FTools-AutoMapper%2F</url>
+    <content type="text"><![CDATA[AutoMapper主要用來處理類別間的轉換官方連結 簡單範例 建立一個Model 1234567891011namespace App.Domain.Model&#123; public class MemberInfo &#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string Email &#123; get; set; &#125; &#125;&#125; 建立對應的ViewModel，只需要顯示MemberID和NickName 123456789namespace App&#123; public class MemberInfoViewModel &#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; &#125;&#125; 一般類別轉換 123456789101112131415private void TransferClass()&#123; MemberInfo infoModel = new MemberInfo() &#123; MemberID = 123, NickName = &quot;abc&quot;, Email = &quot;abc@xxx.com&quot; &#125;; MemberInfoViewModel infoViewModel = new MemberInfoViewModel &#123; MemberID = infoModel.MemberID, NickName = infoModel.NickName &#125;;&#125; AutoMapper寫法 12345678910111213private void TransferClass()&#123; Mapper.CreateMap&lt;MemberInfo, MemberInfoViewModel&gt;(); MemberInfo infoModel = new MemberInfo() &#123; MemberID = 123, NickName = &quot;abc&quot;, Email = &quot;abc@xxx.com&quot; &#125;; MemberInfoViewModel infoViewModel = Mapper.Map&lt;MemberInfoViewModel&gt;(infoModel);&#125; Linq轉換IEnumerable 123456789101112131415161718192021222324public void TransferClassList()&#123; List&lt;MemberInfo&gt; infoModels = new List&lt;MemberInfo&gt;() &#123; new MemberInfo &#123; MemberID = 123, NickName = &quot;abc&quot;, Email = &quot;abc@xxx.com&quot; &#125;, new MemberInfo &#123; MemberID = 456, NickName = &quot;def&quot;, Email = &quot;def@xxx.com&quot; &#125; &#125;; var infoViewModels = infoModels.Select(x =&gt; new MemberInfoViewModel &#123; MemberID = x.MemberID, NickName = x.NickName &#125;);&#125; AutoMapper轉換IEnumerable 12345678910111213141516171819202122public void TransferClassList()&#123; Mapper.CreateMap&lt;IEnumerable&lt;MemberInfo&gt;, IEnumerable&lt;MemberInfoViewModel&gt;&gt;(); List&lt;MemberInfo&gt; infoModels = new List&lt;MemberInfo&gt;() &#123; new MemberInfo &#123; MemberID = 123, NickName = &quot;abc&quot;, Email = &quot;abc@xxx.com&quot; &#125;, new MemberInfo &#123; MemberID = 456, NickName = &quot;def&quot;, Email = &quot;def@xxx.com&quot; &#125; &#125;; var infoViewModels = Mapper.Map&lt;IEnumerable&lt;MemberInfoViewModel&gt;&gt;(infoModels);&#125; AutoMapper全域設定 : 如果轉換有多個地方使用，可以寫在全域 建立Model、ViewModel 1234567891011121314151617181920212223public class MemberInfoModel&#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string Email &#123; get; set; &#125; public string ID &#123; get; set; &#125; public string PW &#123; get; set; &#125;&#125;public class MemberInfoViewModel&#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string UserId &#123; get; set; &#125; public string Password &#123; get; set; &#125;&#125; 在App_Start新增AutoMapperConfig 1234567891011public class AutoMapperConfig&#123; public static void Register() &#123; Mapper.Initialize(cfg =&gt; &#123; cfg.AllowNullCollections = true; cfg.AddProfile&lt;MemberInfoProfile&gt;(); &#125;); &#125;&#125; 在App_Start新增MemberInfoProfile 123456789public class MemberInfoProfile : Profile&#123; public MemberInfoProfile() &#123; CreateMap&lt;MemberInfoModel, MemberInfoViewModel&gt;() .ForMember(dest =&gt; dest.Password, opt =&gt; opt.MapFrom(src =&gt; src.PW)) .ForMember(dest =&gt; dest.UserId, opt =&gt; opt.MapFrom(src =&gt; src.ID)); &#125;&#125; 在Global.asax呼叫 12345678public class WebApiApplication : System.Web.HttpApplication&#123; protected void Application_Start() &#123; GlobalConfiguration.Configure(WebApiConfig.Register); AutoMapperConfig.Register(); &#125;&#125; 使用方式 12345678910111213141516171819202122232425262728293031323334// 單個MemberInfoModel infoModel = new MemberInfoModel&#123; Email = &quot;aaa@xxx.com&quot;, ID = &quot;aaa&quot;, MemberID = 1000001, NickName = &quot;aaa&quot;, PW = &quot;aaa123456&quot;&#125;;var infoViewModel = Mapper.Map&lt;MemberInfoViewModel&gt;(infoModel);// ListList&lt;MemberInfoModel&gt; infoModels = new List&lt;MemberInfoModel&gt;&#123; new MemberInfoModel &#123; Email = &quot;aaa@xxx.com&quot;, ID = &quot;aaa&quot;, MemberID = 1000001, NickName = &quot;aaa&quot;, PW = &quot;aaa123456&quot; &#125;, new MemberInfoModel &#123; Email = &quot;bbb@xxx.com&quot;, ID = &quot;bbb&quot;, MemberID = 1000001, NickName = &quot;bbb&quot;, PW = &quot;bbb123456&quot; &#125;&#125;;var infoViewModels = Mapper.Map&lt;IEnumerable&lt;MemberInfoViewModel&gt;&gt;(infoModels); 轉換設定方式 Ignore: 略過 MapFrom: 指定對應屬性 ResolveUsing: 指定自訂的轉換方式 UseValue: 直接給值 NullSubstitute: 原始值為空才給值 Condition: 條件為True才給值]]></content>
+      <tags>
+        <tag>AutoMapper</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[C#]Tuple Class]]></title>
+    <url>%2F2019%2F04%2F23%2FC-Tuple-Class%2F</url>
+    <content type="text"><![CDATA[function想要回傳多個值的好用類別 舊方法和缺點 自訂class或struct，將想回傳的值包在裡面 有時不是強烈內聚關係，只是單純放在一起，其實並不妥當 有時只會被這個方法使用，無法重用 透過物件的成員，經過方法後的狀態轉變，再取用 若為static方法，可能有thread-safe問題 回傳值的生命週期應該只在這個方法內 使用 out 或 ref，在呼叫時先傳進來 方法外面要先宣告，方法裡面要重新給值 當回傳多個值會相當礙眼 Tuple Class(.NET Framework 4.0)Tuple Class連結 簡單範例123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687namespace App.Domain.Model&#123; using System; public class MemberInfo &#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string Email &#123; get; set; &#125; &#125;&#125;namespace App.Domain.Repository&#123; public interface IMemberInfoRepository &#123; Tuple&lt;Exception, MemberInfo&gt; FindMemberInfo(int memberID); &#125;&#125;namespace App.Persistent.SQL&#123; public class MemberInfoRepository : IMemberInfoRepository &#123; private string connectionString; public MemberInfoRepository(string connectionString) &#123; this.connectionString = connectionString; &#125; public Tuple&lt;Exception, MemberInfo&gt; FindMemberInfo(int memberID) &#123; try &#123; using (var conn = new SqlConnection(this.connectionString)) &#123; var result = conn.QueryFirstOrDefault&lt;MemberInfo&gt;( &quot;SPName&quot;, new &#123; MemberID = memberID &#125;, commandType: CommandType.StoredProcedure); return Tuple.Create&lt;Exception, MemberInfo&gt;(null, result); &#125; &#125; catch (Exception ex) &#123; return Tuple.Create&lt;Exception, MemberInfo&gt;(ex, null); &#125; &#125; &#125;&#125;namespace App.Persistent.Tests&#123; [TestClass] public class MemberInfoRepositoryTests &#123; private IMemberInfoRepository memberInfoRepo; [TestInitialize] public void Initialize() &#123; this.memberInfoRepo = new MemberInfoRepository(ConfigHelper.SQLConnectionString); &#125; [TestMethod] public void FindMemberInfo_Success_Test() &#123; // Arrange int memberID = 100000; // Act var result = this.memberInfoRepo.FindMemberInfo(memberID); // Assert Assert.IsNull(result.Item1); Assert.IsNotNull(result.Item2); Assert.AreEqual(memberID, result.Item2.MemberID); &#125; &#125;&#125; 規範建議 可讀性不佳(C# 7.0可自訂名稱): Tuple的Item不超過3個 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465namespace App.Persistent.SQL&#123; public class MemberInfoRepository : IMemberInfoRepository &#123; private string connectionString; public MemberInfoRepository(string connectionString) &#123; this.connectionString = connectionString; &#125; public (Exception ex, MemberInfo memberInfo) FindMemberInfo(int memberID) &#123; try &#123; using (var conn = new SqlConnection(this.connectionString)) &#123; var result = conn.QueryFirstOrDefault&lt;MemberInfo&gt;( &quot;SPName&quot;, new &#123; MemberID = memberID &#125;, commandType: CommandType.StoredProcedure); return (null, result); &#125; &#125; catch (Exception ex) &#123; return (ex, null); &#125; &#125; &#125;&#125;namespace App.Persistent.Tests&#123; [TestClass] public class MemberInfoRepositoryTests &#123; private IMemberInfoRepository memberInfoRepo; [TestInitialize] public void Initialize() &#123; this.memberInfoRepo = new MemberInfoRepository(ConfigHelper.SQLConnectionString); &#125; [TestMethod] public void FindMemberInfo_Success_Test() &#123; // Arrange int memberID = 100000; // Act var result = this.memberInfoRepo.FindMemberInfo(memberID); // Assert Assert.IsNull(result.ex); Assert.IsNotNull(result.memberInfo); Assert.AreEqual(memberID, result.memberInfo.MemberID); &#125; &#125;&#125; Summary註解中要說明各個Item代表的意義 在Persistent中，Item1為Exception，Item2以後為回傳值]]></content>
+      <tags>
+        <tag>C#</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Unit Test]Persistent Unit Test]]></title>
+    <url>%2F2019%2F04%2F23%2FUnit-Test-Persistent-Unit-Test%2F</url>
+    <content type="text"><![CDATA[持久層單元測試範例 Domain層123456789101112131415161718192021namespace App.Domain.Model&#123; using System; public class MemberInfo &#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string Email &#123; get; set; &#125; &#125;&#125;namespace App.Domain.Repository&#123; public interface IMemberInfoRepository &#123; Tuple&lt;Exception, MemberInfo&gt; FindMemberInfo(int memberID); &#125;&#125; Persistent層1234567891011121314151617181920212223242526272829303132333435namespace App.Persistent.SQL&#123; public class MemberInfoRepository : IMemberInfoRepository &#123; private string connectionString; public MemberInfoRepository(string connectionString) &#123; this.connectionString = connectionString; &#125; public Tuple&lt;Exception, MemberInfo&gt; FindMemberInfo(int memberID) &#123; try &#123; using (var conn = new SqlConnection(this.connectionString)) &#123; var result = conn.QueryFirstOrDefault&lt;MemberInfo&gt;( &quot;SPName&quot;, new &#123; MemberID = memberID &#125;, commandType: CommandType.StoredProcedure); return Tuple.Create&lt;Exception, MemberInfo&gt;(null, result); &#125; &#125; catch (Exception ex) &#123; return Tuple.Create&lt;Exception, MemberInfo&gt;(ex, null); &#125; &#125; &#125;&#125; 單元測試 在AppLib下新增ConfigHelper 123456789namespace App.Persistent.Tests.AppLib&#123; internal static class ConfigHelper &#123; public static readonly string MongoDBConnectionString = &quot;mongodb://xxx.xxx.xx.xx:27017/&quot;; public static string SQLConnectionString = @&quot;Data Source=(localdb)\ProjectsV13;Initial Catalog=xxx;Integrated Security=True&quot;; &#125;&#125; 新增單元測試 12345678910111213141516171819202122232425262728293031323334353637383940414243namespace App.Persistent.Tests&#123; [TestClass] public class MemberInfoRepositoryTests &#123; private IMemberInfoRepository memberInfoRepo; [TestInitialize] public void Initialize() &#123; this.memberInfoRepo = new MemberInfoRepository(ConfigHelper.SQLConnectionString); &#125; [TestMethod] public void FindMemberInfo_Success_Test() &#123; // Arrange int memberID = 100000; // Act var result = this.memberInfoRepo.FindMemberInfo(memberID); // Assert Assert.IsNull(result.Item1); Assert.IsNotNull(result.Item2); Assert.AreEqual(memberID, result.Item2.MemberID); &#125; [TestMethod] public void FindMemberInfo_Exception_Test() &#123; // Arrange int memberID = 100000; // Act var result = this.memberInfoRepo.FindMemberInfo(memberID); // Assert Assert.IsNotNull(result.Item1); Assert.IsNull(result.Item2); &#125; &#125;&#125;]]></content>
+      <tags>
+        <tag>Unit Test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Unit Test]MS Unit Test]]></title>
+    <url>%2F2019%2F04%2F23%2FUnit-Test-MS-Unit-Test%2F</url>
+    <content type="text"><![CDATA[介紹透過Microsoft Visual Studio建立單元測試專案 建立單元測試專案 主要元件 常用Attribute TestClass: 內涵測試方法的類別 TestMethod: 測試最小單位，需放在測試類別中 AssemblyInitialize: 在該組件所有測試前，用來配置組件所使用的資源 ClassInitialize: 在該類別所有測試前，用來配置類別所使用的資源 TestInitialize: 在測試方法執行前，用來配置測試方法所使用的資源 TestCleanup: 在測試方法執行後，用來釋放測試方法所使用的資源 ClassCleanup: 在該類別所有測試後，用來釋放類別所使用的資源 AssemblyCleanup: 該組件所有測試後，用來釋放組件所使用的資源 Assert類別 AreEqual: 兩物件是否相等 AreNotEqual: 兩物件是否不相等 IsTrue: 結果是否為True IsFalse: 結果是否為False IsNull: 結果是否為Null IsNotNull: 結果是否不為Null … Assert類別連結 如何測試(還可以Debug哦~) 測試總管 方法上 或 按右鍵]]></content>
+      <tags>
+        <tag>Unit Test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Unit Test]AAA原則]]></title>
+    <url>%2F2019%2F04%2F23%2FUnit-Test-AAA%E5%8E%9F%E5%89%87%2F</url>
+    <content type="text"><![CDATA[簡單介紹單元測試的一些基本原則 基本原則 正面測試 反面測試 例外測試 不需追求涵蓋率，只測試有邏輯的方法 測試方法命名要明確 AAA原則 Arrange: 初始化物件、要用到的參數 Act: 呼叫要測試的方法 Assert: 驗證測試結果 簡單範例 主程式 1234567891011121314151617namespace App&#123; public class Calculator &#123; public int Add(int x, int y) &#123; try &#123; return x + y; &#125; catch (Exception ex) &#123; throw ex; &#125; &#125; &#125;&#125; 測試程式 12345678910111213141516171819202122namespace App.Tests&#123; [TestClass()] public class CalculatorTests &#123; [TestMethod()] public void Add_Success_Test() &#123; // Arrange Calculator calc = new Calculator(); int x = 1; int y = 2; int expected = 3; // Act int actual = calc.Add(x, y); // Assert Assert.AreEqual(expected, actual); &#125; &#125;&#125;]]></content>
+      <tags>
+        <tag>Unit Test</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Design Patterns]Publish/Subscribe Pattern]]></title>
+    <url>%2F2019%2F04%2F22%2FDesign-Patterns-Publish-Subscribe-Pattern%2F</url>
+    <content type="text"><![CDATA[發佈/訂閱模式 (Publish/Subscribe Pattern)在實務上，通常被指為建立事件驅動(Event-driven)或訊息導向軟體的訊息傳遞模式，適合拿來做不同服務間的訊息傳遞或狀態同步 名詞解釋 Message: 傳送的訊息 Topic: 可以被訂閱的實體 Subscription: Topic 跟 Subscriber 之間的實體 Publisher: 提供並發送訊息到Topic Subscriber: 訂閱Topic的單位 簡易情境 Publisher1、Publisher2 可以同時發佈訊息 A、B 到相同的 Topic Subscription1 可以給多個Subscriber1、Subscriber2 訂閱 Subscription2 可以同時訂閱多個Topic Message的生命週期 Publisher發佈一則訊息 訊息寫入storage Pub/Sub送一個ack給Publisher說收到訊息 Pub/Sub將訊息傳給Subscriber Subscriber送一個ack給Pub/Sub說收到訊息 Subscriber push: 主動 低流量情形 pull: 被動 大量的訊息 很重視效能和訊息傳遞因素 特性 送達保證1次 適合傳輸大量且沒有時間排序的資料 系統、服務間的解耦:透過broker進行解耦，Publisher和Subscriber之間無相依性 時間的解耦:透過async的方式，使訊息傳遞不需等待 擴展性高 順序保證:FIFO Event特性 過去式 參考網址Kafka深度解析]]></content>
+      <tags>
+        <tag>Design Patterns</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Design Patterns]Repository Pattern]]></title>
+    <url>%2F2019%2F04%2F18%2FDesign-Patterns-Repository-Pattern%2F</url>
+    <content type="text"><![CDATA[應用程式隨著雲端發展、分散式架構和資料庫的多樣性，資料來源不會只有一種，為了整合這麼多種資料儲存類型，可以使用Repository Pattern 來切割DAL和BLL 好處 BLL不直接存取資料，關注點分離 方便抽換DAL 方便單元測試 先定義Model1234567891011namespace WebApp.Domain.Model&#123; public class MemberInfo &#123; public int MemberID &#123; get; set; &#125; public string NickName &#123; get; set; &#125; public string Email &#123; get; set; &#125; &#125;&#125; 建立介面1234567namespace WebApp.Domain.Repository&#123; public interface IMemberInfoRepository &#123; Tuple&lt;Exception, MemberInfo&gt; GetMemberInfo(); &#125;&#125; 建立實體 MSSQL版本 1234567891011121314151617181920212223242526272829303132namespace WebApp.Persistent.SQL&#123; public class MemberInfoRepository : IMemberInfoRepository &#123; private string connectionString; public MemberInfoRepository(string connectionString) &#123; this.connectionString = connectionString; &#125; public Tuple&lt;Exception, MemberInfo&gt; GetMemberInfo() &#123; try &#123; using (var conn = new SqlConnection(this.connectionString)) &#123; var result = conn.QueryFirstOrDefault&lt;MemberInfo&gt;( &quot;SPName&quot;, param, commandType: CommandType.StoredProcedure); return Tuple.Create&lt;Exception, MemberInfo&gt;(null, result); &#125; &#125; catch (Exception ex) &#123; return Tuple.Create&lt;Exception, MemberInfo&gt;(ex, null); &#125; &#125; &#125;&#125; Mongo版本 123456789101112131415161718192021222324252627282930313233343536373839namespace WebApp.Persistent.Mongo&#123; public class MemberInfoRepository : IMemberInfoRepository &#123; private const string collectionName = &quot;MemberInfo&quot;; private MongoClient client &#123; get; set; &#125; private IMongoDatabase db &#123; get; set; &#125; private IMongoCollection&lt;MemberInfo&gt; collection &#123; get; set; &#125; static MemberInfoRepository() &#123; BsonClassMap.RegisterClassMap&lt;MemberInfo&gt;(cm =&gt; &#123; cm.AutoMap(); cm.SetIgnoreExtraElements(true); &#125;); &#125; public MemberInfoRepository(string connectionString, string dbName) &#123; client = new MongoClient(connectionString); db = client.GetDatabase(dbName); collection = db.GetCollection&lt;MemberInfo&gt;(collectionName); &#125; public Tuple&lt;Exception, MemberInfo&gt; GetMemberInfo() &#123; try &#123; var result = this.collection.Aggregate().FirstOrDefault(); return Tuple.Create&lt;Exception, MemberInfo&gt;(null, result); &#125; catch (Exception ex) &#123; return Tuple.Create&lt;Exception, MemberInfo&gt;(ex, null); &#125; &#125; &#125;&#125; 請搭配Autofac服用]]></content>
+      <tags>
+        <tag>Design Patterns</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Tools]IOC控制反轉 & DI依賴注入 & Autofac]]></title>
+    <url>%2F2019%2F04%2F17%2FTools-IOC%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%89-DI%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-Autofac%2F</url>
+    <content type="text"><![CDATA[IOC(Inversion of Control)控制反轉是物件導向程式設計中的一種設計原則，可以用來減低電腦程式碼之間的耦合度。依賴注入(Dependency Injection)是最常使用的方式。 IOC(Inversion of Control)以下用程式碼做簡單的範例說明: 1234567891011121314151617public class ObjectA&#123; private ObjectB obj = new ObjectB(); public void FindSomething() &#123; obj.FindB(); &#125;&#125;public class ObjectB&#123; public void FindB() &#123; Console.WriteLine(&quot;ObjectB FindB&quot;); &#125;&#125; ObjectA 使用 ObjectB 的方法去完成一項工作，在 ObjectA 要 new 一個 ObjectB 起來所以在建立 ObjectA 時，也會把 ObjectB 建立起來換句話說，現在沒有 ObjectB 就沒有 ObjectA ， ObjectA 相依於 ObjectB 如果 ObjectB 需要替換，就必須修改宣告、new 的類型也要修改，可能呼叫的方法也要改，如下: 1234567891011121314151617public class ObjectA&#123; private ObjectC obj = new ObjectC(); public void FindSomething() &#123; obj.FindC(); &#125;&#125;public class ObjectC&#123; public void FindC() &#123; Console.WriteLine(&quot;ObjectC FindC&quot;); &#125;&#125; 比較好的設計方式是相依於介面 123456789101112131415161718192021222324252627282930public interface IObject&#123; void Find();&#125;public class ObjectA&#123; private IObject obj = new ObjectB(); public void FindSomething() &#123; obj.Find(); &#125;&#125;public class ObjectB : IObject&#123; public void Find() &#123; Console.WriteLine(&quot;ObjectB Find&quot;); &#125;&#125;public class ObjectC : IObject&#123; public void Find() &#123; Console.WriteLine(&quot;ObjectC Find&quot;); &#125;&#125; DI(Dependency Injection)這樣在抽換物件時，只需要變更建立類型即可，還可以搭配 DI 讓程式碼更靈活常見的注入方式有三種: 建構子注入，這是最常見的方式 1234567891011121314public class ObjectA&#123; private IObject obj; public void ObjectA(IObject obj) &#123; this.obj = obj; &#125; public void FindSomething() &#123; obj.Find(); &#125;&#125; 屬性注入，適合相依物件需要與外部互動 12345678910111213141516171819202122232425public class ObjectA&#123; private IObject obj; public IObject Obj &#123; get &#123; return this.obj; &#125; set &#123; this.obj = value; &#125; &#125; public void FindSomething() &#123; if (this.obj == null) &#123; throw new ArgumentNullException(&quot;obj&quot;, &quot;obj is null&quot;); &#125; obj.Find(); &#125;&#125; 參數注入 1234567891011public class ObjectA&#123; public void FindSomething(IObject obj) &#123; if (obj == null) &#123; throw new ArgumentNullException(&quot;obj&quot;, &quot;obj is null&quot;); &#125; obj.Find(); &#125;&#125; IOC容器Tool-Autofac透過NuGet安裝Autofac套件 依照專案是MVC 或是 WebApi 去安裝整合套件 在App_Start資料夾下新增一個AutofacConfig1234567891011121314151617181920212223242526272829303132333435363738namespace WebApi.App_Start&#123; using System.Reflection; using System.Web.Mvc; using Autofac; using Autofac.Integration.Mvc; using Autofac.Integration.WebApi; public static class AutofacConfig &#123; public static IContainer Container; public static void RegisterContainer() &#123; var builder = new ContainerBuilder(); builder.RegisterApiControllers(Assembly.GetExecutingAssembly()); builder.RegisterAssemblyTypes(Assembly.Load(&quot;WebApi.Domain&quot;), Assembly.Load(&quot;WebApi.Persistent&quot;)) .WithParameter(&quot;connectionString&quot;, ConfigHelper.MasterDB) .Where(t =&gt; t.Namespace == &quot;WebApi.Persistent.SQL&quot; || t.Namespace == &quot;WebApi.Domain.Repository&quot;) .As(t =&gt; t.GetInterfaces().FirstOrDefault(i =&gt; i.Name == $&quot;I&#123;t.Name&#125;&quot;)) .SingleInstance(); builder.RegisterAssemblyTypes(Assembly.Load(&quot;WebApi.Domain&quot;), Assembly.Load(&quot;WebApi.Persistent&quot;)) .WithParameter(&quot;connectionString&quot;, ConfigHelper.MongoDBConnectionString) .WithParameter(&quot;dbName&quot;, ConfigHelper.MongoDBName) .Where(t =&gt; t.Namespace == &quot;WebApi.Persistent.Mongo&quot; || t.Namespace == &quot;WebApi.Domain.Repository&quot;) .As(t =&gt; t.GetInterfaces().FirstOrDefault(i =&gt; i.Name == $&quot;I&#123;t.Name&#125;&quot;)) .SingleInstance(); Container = builder.Build(); var config = GlobalConfiguration.Configuration; config.DependencyResolver = new AutofacWebApiDependencyResolver(Container); DependencyResolver.SetResolver(new AutofacDependencyResolver(Container)); &#125; &#125;&#125; 在Global的Application_Start啟用Autofac12345protected void Application_Start()&#123; GlobalConfiguration.Configure(WebApiConfig.Register); AutofacConfig.RegisterContainer();&#125; 使用方式 建構子注入 12345678910111213public class TestController : ApiController&#123; private IMemberInfoRepository memberInfoRepo; public MemberController(IMemberInfoRepository memberInfoRepo) &#123; this.memberInfoRepo = memberInfoRepo; &#125; public Results GetMemberInfo() &#123; var findResult = this.memberInfoRepo.GetMemberInfo(); &#125;&#125; using 1234567891011public class TestController : ApiController&#123; public Results GetMemberInfo() &#123; using (var scope = App_Start.AutofacConfig.Container.BeginLifetimeScope()) &#123; var memberInfoRepo = scope.Resolve&lt;IMemberInfoRepository&gt;(); var findResult = memberInfoRepo.GetMemberInfo(); &#125; &#125;&#125; Multiple implementations of an interface for Autofachttps://edo-van-asseldonk.blogspot.com/2013/01/autofac-and-multiple-implementations-of.html https://autofaccn.readthedocs.io/en/latest/faq/select-by-context.html https://www.codeproject.com/Tips/870246/How-to-register-and-use-Multiple-Classes-Implement Multiple implementations of an interface for ASP .NET Corehttps://dejanstojanovic.net/aspnet/2018/december/registering-multiple-implementations-of-the-same-interface-in-aspnet-core/]]></content>
+      <tags>
+        <tag>IOC</tag>
+        <tag>DI</tag>
+        <tag>Autofac</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Git]Git Flow 開發流程]]></title>
+    <url>%2F2019%2F04%2F09%2FGit-Git-Flow-%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[簡單介紹Git Flow開發流程，2010年提出，來源如下:http://nvie.com/posts/a-successful-git-branching-model/ Git Flow模型 分支類型主要分支 master:穩定隨時可上線版本，永遠在production-ready狀態 develop:所有開發的基礎分支 支援分支 feature:開發新功能，由develop切出，開發完在合回develop release:上線前最後測試版本，由develop將完成的功能合併過來 只能修BUG，不可新增功能 只能修BUG，不可新增功能 只能修BUG，不可新增功能 hotfix:線上出現緊急問題要處理，由master切出，修復完後需合併回master及develop 只能修BUG，不可新增功能 只能修BUG，不可新增功能 只能修BUG，不可新增功能 其他 rebase指令可以整理commit紀錄 使用Pull Request做Code Review]]></content>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Tools]DB Migration Tool:dbup]]></title>
+    <url>%2F2019%2F03%2F21%2FTools-DB-Migration-Tool-dbup%2F</url>
+    <content type="text"><![CDATA[介紹DB Migration工具: DBUp dbup 用來更新資料庫的工具 只能往前更新，不能往後回復更新 dbup-consolescripts 用來新增一個年月日時分秒_檔名.sql的套件 建立一個Console專案 透過NuGet新增dbup和dbup-consolescripts12install-package dbupinstall-package dbup-consolescripts 加入System.Configuration參考 新增連線字串 修改Program.cs123456789101112131415161718192021222324252627282930313233343536373839namespace TestSystem.Migration&#123; using System; using System.Configuration; using System.Reflection; using DbUp; class Program &#123; static int Main(string[] args) &#123; var connectionString = ConfigurationManager.ConnectionStrings[&quot;ConnectionString&quot;].ToString(); var upgrader = DeployChanges.To .SqlDatabase(connectionString) .WithScriptsEmbeddedInAssembly(Assembly.GetExecutingAssembly()) .LogToConsole() .Build(); var result = upgrader.PerformUpgrade(); if (!result.Successful) &#123; Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine(result.Error); Console.ResetColor(); Console.ReadLine(); return -1; &#125; Console.ForegroundColor = ConsoleColor.Green; Console.WriteLine(&quot;Success!&quot;); Console.ResetColor(); Console.ReadLine(); return 0; &#125; &#125;&#125; 新增SQL檔案 透過套件管理器主控台執行New-Migration 名稱, 即可新增一個年月日時分秒_名稱的sql檔案 按下F5執行資料庫更新 資料庫更新紀錄 好處 DB更新有歷程記錄 快速建立新環境 避免人為疏失]]></content>
+      <tags>
+        <tag>DB</tag>
+        <tag>Migration</tag>
+        <tag>DBUp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Knowledge]軟體分層]]></title>
+    <url>%2F2019%2F03%2F21%2FKnowledge-%E8%BB%9F%E9%AB%94%E5%88%86%E5%B1%A4%2F</url>
+    <content type="text"><![CDATA[軟體分層的基本介紹 基本三層式架構 展示層(Presentation Layer) 業務邏輯層 (Business Layer) 資料層 (Data Layer) 優點 結構簡單，容易理解和開發 層與層間相依於介面，強化內聚，降低耦合 資源重用性好 關注點分離，每一層都可以獨立開發、測試 提高系統安全性 便於資料庫抽換 缺點 調整時會比較麻煩、費時 服務型分層架構 新增服務層 (Service Layer) : 負責把封閉的分層開放給外部使用 比三層式架構多了點彈性 領域驅動設計架構 新增領域層 (Domain Layer) : 專注理解使用者需求 需要一位領域專家 優點 貼近使用者 一套流程處理複雜問題 幫助我們有組織且可測試的程式碼 好維護 缺點 需花時間溝通理解 學習曲線比較高 不適合無複雜商業邏輯的情境]]></content>
+      <tags>
+        <tag>Knowledge</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Azure]AD整合]]></title>
+    <url>%2F2019%2F03%2F04%2FAzure-AD%E6%95%B4%E5%90%88%2F</url>
+    <content type="text"><![CDATA[WEB整合Azure Active Directory步驟 建立新的Azure Active Directory目錄 依序選取 建立資源 –&gt; 身分識別 –&gt; Azure Active Directory 輸入組織名稱、初始網域名稱和選擇國家及地區，選取[建立]，注意:初始網域必須是唯一 使用新目錄建立群組 切換目錄 先建立群組再加入成員 新增使用者加入群組，使用預設網域(也可以自訂) 註冊應用程式(輸入WEB首頁網址)，驗證重新導向URI加上/.auth/login/aad/callback 設定Azure WEB應用程式服務，使用Azure AD驗證 登入WEB，輸入AD帳號，勾選同意接受]]></content>
+      <tags>
+        <tag>Azure</tag>
+        <tag>AD</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Travel]2018-12-07東京聖誕之旅]]></title>
+    <url>%2F2019%2F01%2F16%2FTravel-2018-12-07%E6%9D%B1%E4%BA%AC%E8%81%96%E8%AA%95%E4%B9%8B%E6%97%85%2F</url>
+    <content type="text"><![CDATA[2018-12-07 ~ 2018-12-12跟太座、女兒 一家三口一起到東京過聖誕的一些旅遊心得和紀錄。 行前準備 手機網路: 購買飛買家六天卡 2張 飛買家網頁 保險: 富邦旅平卡 大人保 100W 小孩保 200W 12/7 12:00~ 12/13 12:00 富邦旅平卡網頁 換日幣 東京地鐵乘車券48H: KLOOK預定，在成田機場取票(一樓國際航班到達大廳南口EASYGO櫃檯)，通常櫃台都有會說中文的人 所有東京 Metro 地鐵及都營地鐵綫路 東京 Metro 地鐵： 銀座線，丸之內線，日比谷線，東西線，千代田線，有樂町線，半藏門線，南北線，副都心線 都營地鐵： 淺草線，三田線，新宿線，大江戶線 KLOOK東京地鐵乘車券網頁 箱根周遊券2天: KLOOK預定，唯一兌換地點新宿西口小田急旅遊服務中心Sightseeing Service Center West，通常櫃台都有會說中文的人 KLOOK箱根周遊券網頁 去程高鐵票: 回程時間不一定，所以沒買，這次去桃園機場是坐高鐵 接 機場捷運 飛機航班:長榮 2018-12-07(星期五) BR196 15:20 桃園2航廈 –&gt; 19:20 成田1航廈 2018-12-12(星期三) BR197 14:00 成田1航廈 –&gt; 15:05 桃園2航廈 住宿 12-07~12-09 住錦糸町 東京黎凡特東武酒店 高級雙人房 不含早餐(都市景觀) 12-10 住箱根 ゆとりろ庵箱根強羅 和式榻榻米 1泊2食 12-11 住錦糸町 東京黎凡特東武酒店 經濟雙床房 不含早餐 (晴空塔景觀) 東京黎凡特東武酒店 ゆとりろ庵箱根強羅 預計行程第一天家 – 搭小黃 –&gt; 台中高鐵站 —-&gt; 桃園高鐵站 – 走路2分鐘 –&gt; 機場捷運 – 約30分鐘 –&gt; 桃園機場2航廈 – 長榮報到 搭飛機 –&gt; 成田機場1航廈 —-&gt; 錦糸町-東武酒店:check in 第二天錦糸町-東武酒店 —-&gt; 清澄白河:藍瓶咖啡吃早餐 —-&gt; 東京大學:賞銀杏 —-&gt; 新宿:拿箱根周遊券 —-&gt; 原宿:購物 —-&gt; 六本木:賞聖誕燈飾 —-&gt; 錦糸町-東武酒店 第三天錦糸町-東武酒店 —-&gt; 日比谷公園:賞楓 —-&gt; 押上: 逛晴空塔 —-&gt; 錦糸町: 逛阿卡將 —-&gt; 錦糸町-東武酒店 第四天錦糸町-東武酒店: check out &amp; 寄放大行李 —-&gt; 新宿 —-&gt; 小田急新宿站 —-&gt; 箱根湯本: 寄行李到飯店 &amp; 吃花本店 —-&gt; 箱根神社 —-&gt; 海賊船 元箱根碼頭 —-&gt; 海賊船 桃園台港 —-&gt; 大涌谷 —-&gt; 早雲山車站 —-&gt; 中強羅 —-&gt; ゆとりろ庵箱根強羅:check in &amp; 吃晚餐 &amp; 泡湯 第五天ゆとりろ庵箱根強羅:check out —-&gt; 強羅公園 —-&gt; 強羅 —-&gt; 箱根湯本 —-&gt; 新宿 —-&gt; 汐留 —-&gt; 錦糸町-東武酒店:check in 第六天錦糸町-東武酒店:check out —-&gt; 成田機場1航廈 —-&gt; 桃園機場2航廈 —-&gt; 機場捷運 —-&gt; 桃園高鐵 —-&gt; 台中高鐵 —-&gt; 家 實際行程第一天:照計畫走家 – 搭小黃 –&gt; 台中高鐵站 —-&gt; 桃園高鐵站 – 走路2分鐘 –&gt; 機場捷運 – 約30分鐘 –&gt; 桃園機場2航廈 – 長榮報到 搭飛機 –&gt; 成田機場1航廈 —-&gt; 錦糸町-東武酒店:check in 第二天:還是愛慢遊錦糸町-東武酒店 —-&gt; 東京大學:賞銀杏 &amp; 吃早餐 —-&gt; 新宿:拿箱根周遊券 —-&gt; 原宿:購物 —-&gt; 六本木:賞聖誕燈飾 —-&gt; 錦糸町-東武酒店 第三天:購物行程錦糸町-東武酒店 —-&gt; 押上: 逛晴空塔 —-&gt; 錦糸町: 逛阿卡將 —-&gt; 錦糸町-東武酒店 第四天:計畫趕不上變化，只好隨機應變錦糸町-東武酒店: check out &amp; 寄放大行李 —-&gt; 新宿 —-&gt; 小田急新宿站 —-&gt; 箱根湯本: 寄行李到飯店 &amp; 吃花本店 —-&gt; 御殿場 —-&gt; 強羅 —-&gt; ゆとりろ庵箱根強羅:check in &amp; 吃晚餐 &amp; 泡湯 第五天:也是隨機應變ゆとりろ庵箱根強羅:check out —-&gt; 早雲山車站 —-&gt; 大涌谷 —-&gt; 海賊船 桃園台港 —-&gt; 海賊船 元箱根碼頭 —-&gt; 箱根湯本 —-&gt; 新宿 —-&gt; 錦糸町-東武酒店:check in 第六天:回家囉~錦糸町-東武酒店:check out —-&gt; 成田機場1航廈 —-&gt; 桃園機場2航廈 —-&gt; 機場捷運 —-&gt; 桃園高鐵 —-&gt; 台中高鐵 —-&gt; 家 心得感想第一天:出發往東京出發囉~ 11:00左右從家裡出發搭計程車到台中高鐵站，這次不搭機場接送，因為上次搭有點怕到，司機開好猛，所以改試試 高鐵 + 機場捷運的組合，覺得還不賴。高鐵 台中 11:36 - 桃園 12:18 $485.0桃園高鐵站出來會有往機場捷運的指標，大概走路2分鐘就到了，搭到機場第二航廈，大概30分鐘 $35搭高鐵 + 捷運的好處是快速又不用怕塞車，大推~~~ 我們出關後，立馬帶女兒到第二航廈的C3 Hello Kitty候機室，讓他放電一下，希望上機可以順利睡個覺。 到東京成田機場第一航廈，要先去南口拿東京周遊券，因為到東京比較晚了，在台灣先查好要怎麼到飯店。這次住錦糸町主要是考量房間大小、價格和離車站要近，所以選擇了這間飯店，但缺點就是搭車可能需要轉車。 方案A:20:30~21:56 JR總武本線 –&gt; 成田線快速 不用轉車直達，最佳方案方案B:20:39~22:19 京成本線快速-&gt; 押上轉車 -&gt;東京Metro地鐵半藏門線普通 趕不上方案A時的替代方案 雖然最後有搭上方案A，但也是很驚險，主要是我們使用的ICOCA卡金額不足，需要儲值(很多人在排隊儲值)，所以時間要抓充裕一點到飯店Check in後，終於可以休息一下，喝喝水看看東京街景，水啦~ 飯店使用感覺還不錯，床很大、空間跟市區比也是相對大，離車站超近，還有送小孩用品，大推~~ 第二天:慢遊 我們習慣都是先排好大概行程後，前一天在討論細調，因為第一天晚到，所以今天休息晚一點，直接跑東大行程，我本來以為東大應該不會逛太久，沒想到 銀杏 太美了，在東大大拍網美照，還討論以後要收集日本各大學景點，哈哈哈哈哈。 從東大赤門進入 銀杏和天空，好漂亮，天氣真好 第三天錦糸町-東武酒店 —-&gt; 押上: 逛晴空塔 —-&gt; 錦糸町: 逛阿卡將 —-&gt; 錦糸町-東武酒店 第四天錦糸町-東武酒店: check out &amp; 寄放大行李 —-&gt; 新宿 —-&gt; 小田急新宿站 —-&gt; 箱根湯本: 寄行李到飯店 &amp; 吃花本店 —-&gt; 御殿場 —-&gt; 強羅 —-&gt; ゆとりろ庵箱根強羅:check in &amp; 吃晚餐 &amp; 泡湯 第五天ゆとりろ庵箱根強羅:check out —-&gt; 早雲山車站 —-&gt; 大涌谷 —-&gt; 海賊船 桃園台港 —-&gt; 海賊船 元箱根碼頭 —-&gt; 箱根湯本 —-&gt; 新宿 —-&gt; 錦糸町-東武酒店:check in 第六天錦糸町-東武酒店:check out —-&gt; 成田機場1航廈 —-&gt; 桃園機場2航廈 —-&gt; 機場捷運 —-&gt; 桃園高鐵 —-&gt; 台中高鐵 —-&gt; 家 總結]]></content>
+      <tags>
+        <tag>Travel</tag>
+        <tag>東京</tag>
+        <tag>東京大學</tag>
+        <tag>銀杏</tag>
+        <tag>箱根</tag>
+        <tag>泡湯</tag>
+        <tag>錦糸町</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Books]重構-改善既有程式設計-Part2]]></title>
+    <url>%2F2019%2F01%2F04%2FBooks-%E9%87%8D%E6%A7%8B-%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-Part2%2F</url>
+    <content type="text"><![CDATA[重點整理第二Part Chapter 2: 重構原則何謂重構 名詞:對軟體內部結構的一種調整，目的是在不改變”軟體之可察行為”前提下，提高其可理解性，降低其修改成本 動詞:使用一系列重構準則(手法)，在不改變”軟體之可察行為”前提下，調整其結構 更高效且受控的程式碼整理技術 重構目的 使軟體更容易理解且修改 效率最佳化 重構不會改變軟體”可受觀察之行為” 為何重構 重構是個工具，可以幫助你始終良好的控制自己的程式碼 重構改進軟體設計 : 經常性的重構可以幫助程式碼維持該有的型態，改進設計的重要方向就是消除重複程式碼 重構使軟體更易被理解 : 讓未來的開發者好理解，協助自己理解不熟悉的程式碼(擦掉窗戶上的污垢，使你看得更遠) 重構助你找到Bugs : 對程式碼的理解可以幫助找到Bugs，更有效地寫出強固穩健的程式碼 重構助你提高開發速度 : 良好設計是快速軟體開發的根本 何時重構 重構應該隨時隨地進行 三次法則 : 事不過三，三則重構 添加功能時一併重構 : 增加理解要修改的程式碼，讓未來新增特性可以更輕鬆，最主要原因是這是最快速流暢的過程 修補錯誤時一併重構 : 增加可讀性，更容易找到Bugs Code Reviews時一併重構 : 有助於開發團隊傳播知識和理解大型軟體系統，和團隊進行設計複審和個別複審者進行程式碼複審 為什麼重構有用 程式困難修改的原因 : 難以閱讀的程式，難以修改 邏輯重複得程式，難以修改 添加新行為時需要修改既有程式碼，難以修改 帶複雜條件邏輯的程式，難以修改 希望程式 : 容易閱讀 相同邏輯都只在唯一地點 新的改動不會危及現有行為 盡可能簡單表達條件邏輯 它在一個可執行的程式上進行，企圖在”不改變程式行為”賦予上述美好性質，讓我們保持高速開發，增加程式價值 怎麼跟主管說 品質驅動 : 技術複審是減少錯誤、提供開發速度的一條重要途徑，重構可以做為複審的一個方法 進度驅動 : 不要跟長官說，能在時程內完工就行了，怎麼做就自己決定 間接層價值 允許邏輯共享 分開解釋意圖和實作 將變化加以隔離 將條件邏輯加以編碼 找出不值得的間接層(寄生式間接層)並拿掉 重構的難題 資料庫 : 大多數商用程式都與DB Schema緊密耦合 資料遷移(Migration) 解決辦法之一: 在物件模型和資料庫模型間插入一個分隔層，這樣就可以各自變化，會增加系統複雜度，但提高靈活度 修改已發佈介面 : 必須同時維護新舊兩個介面，直到所有用戶都改好 讓舊介面呼叫新介面 使用Obsolete Or Deprecation標記 盡量不要發佈介面 難以藉由重構手法完成的設計改動 何時不該重構? 程式碼不能正常運作 : 重寫 先重構為”封裝良好的小型組件”，在判斷組件是要重構還是重寫 專案已近最後期限，也避免重構 重構與設計 彼此互補 適當的預先設計節省回頭工的高額成本，再搭配重構 持續重構可以應付變化帶來的風險，當下只需構築可執行的最簡化系統 請實際測量效率，不要臆測，通常都是錯的 1有了設計，可以我思考更快，但是其中充滿小漏洞 -- Alistair Cockburn 重構與效率/性能(Performance) 時間預算法 : 用於效率要求極高的即時系統，分解設計時要做好預算，預先分配一定資源，資訊系統通常不用那麼高效 持續關切法 : 任何人在任何時間做任何事都要設法保持系統高效率，通常會讓程式更複雜、難以維護，因而減緩開發速度 關於效率 : 大半時間都耗在一小半程式碼，若所有程式碼都優化會有90%都是浪費時間 以一種”良好的分解方式”建造自己的程式，再用工具找出效率熱點，並集中關切 短程來看，重構會使軟體變慢，但軟體效率調整更容易 結論 事不過三，三則重構 相關技術 : UML示意圖，CRC卡，極限編程(Extreme Programming)，搭檔編程(Pair Programming)]]></content>
+      <tags>
+        <tag>Books</tag>
+        <tag>Refactoring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Books]重構-改善既有程式設計-Part1]]></title>
+    <url>%2F2019%2F01%2F03%2FBooks-%E9%87%8D%E6%A7%8B-%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-Part1%2F</url>
+    <content type="text"><![CDATA[這是一篇重點整理 序言 重構必須系統化進行，否則只是在自掘墳墓 重構準則幫你一次一小步修改程式碼，減少過程中的風險 前言什麼是重構(在程式碼寫好後改進它的設計) 在不改變程式碼外在行為的前提上，對程式碼做出修改，以改進程式碼的內部結構 是一種有紀律、經過訓練、有條不紊的程式整理方法(可以將引入錯誤機率降到最低) 設計不再是一切動作的前提，透過持續重構，可以在整個開發過程逐漸浮現出來 這些重構準則不針對並行(concurrent)或分散式(distributed)編程 Chapter 1: 重構的第一個案例 第一步:建立一組可靠的測試環境，需有自我檢測(self-checking)能力 分解並重組 一次修改一小部分並測試，測試通過後再修改 重構技術係以微小的步伐修改程式，使得犯下錯誤很容易被發現 可以使用重構工具降低錯誤: Refactoring Browser、ReSharper 好的程式碼應該清楚表達出自己的功能，變數名稱是程式碼清晰的關鍵 程式碼應該表現自己的目的 結論 測試、小修改、測試、小修改…. 相關技術 : Disign Patterns之狀態模式]]></content>
+      <tags>
+        <tag>Books</tag>
+        <tag>Refactoring</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[GCP]Use XShell Connect To GCE]]></title>
+    <url>%2F2018%2F12%2F14%2FGCP-Use-XShell-Connect-To-GCE%2F</url>
+    <content type="text"><![CDATA[手把手創建Linux GCE，先使用ssh Key登入，幫root設定密碼，順便優化回應慢的問題 在GCE上創建CentOS 7的VM Instance 建立執行個體 根據需求勾選防火牆設定 啟用防刪除功能，之後要刪除要先將此功能停掉，才可以刪除 可以設定此執行個體用的SSH Key，也可以用全域 建立其他硬碟 點建立，完成建立一個VM Instance 使用XShell產生SSH Key並連線 使用外部IP(臨時)連線，重開機臨時的外部IP會改變，可以根據用途綁定固定IP 接收主機憑證指紋並存檔 輸入使用者名稱(自訂) 創建SSH Public Key 將SSH Public Key複製起來，註冊到GCE中繼資料(此為全域)，Key最後要空一格填上剛剛自訂的使用者名稱，並儲存 連線成功 開啟Root設定密碼，並優化回應慢 先輸入下列指令，更改配置檔 12345// 切換到rootsudo -i// 更改配置檔vi /etc/ssh/sshd_config 12345678910// 配置檔更改內容PermitRootLogin yesPasswordAuthentication yes#PasswordAuthentication noGSSAPIAuthentication no#GSSAPIAuthentication yesUseDNS no 設置Root密碼 12// 幫root設定密碼passwd root 重開服務使修改生效 1service sshd restart 可以使用Root及密碼登入]]></content>
+      <tags>
+        <tag>GCP</tag>
+        <tag>GCE</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[MSSQL]Server二三事]]></title>
+    <url>%2F2018%2F12%2F06%2FMSSQL-Server%E4%BA%8C%E4%B8%89%E4%BA%8B%2F</url>
+    <content type="text"><![CDATA[使用SSMS(SQL SERVER Management Studio)，說明Server的功能 Server Properties General : 基本訊息(作業系統、版本、語言、定序…) Memory : 記憶體設定(上下限…) MSSQL記憶體吃了不會釋放，會預留給下次使用，所以通常會保留一些記憶體給OS使用，避免DB吃滿記憶體，造成服務異常 Processors : 處理器設定(通常Server端的DB會有專屬機器，比較少設定此類屬性) Security : 安全性設定 Connections : 連線設定(設定遠端連線逾時時間…) Database Settings : 資料庫設定 Advanced : 進階設定 Permissions : 權限設定 Activity Monitor Overview : CPU、Task、I/O、Requests/Sec Processes : 處理中的工作 Resource Waits : 等候資源，可以看出資源瓶頸在哪 Data File I/O : 資料庫硬碟建議用SSD Recent Expensive Queries : 最近費時的查詢，查詢按右鍵看執行計畫，根據執行計畫優化語法 Active Expensive Queries : 使用中費時的查詢，查詢按右鍵看執行計畫，根據執行計畫優化語法]]></content>
+      <tags>
+        <tag>DB</tag>
+        <tag>MSSQL</tag>
+        <tag>SSMS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[MSSQL]分頁]]></title>
+    <url>%2F2018%2F12%2F04%2FMSSQL-%E5%88%86%E9%A0%81%2F</url>
+    <content type="text"><![CDATA[筆記一下自己常用的兩個SQL分頁寫法，通常會提供總筆數和分頁內容給使用端 方法一 : 使用ROW_NUMBER()搭配OVER(ORDER BY Field)(SQL Server 2008 開始) ROW_NUMBER() 12ROW_NUMBER ( ) OVER ( [ PARTITION BY value_expression , ... [ n ] ] order_by_clause ) 先用ROW_NUMBER()替每筆資料設定編號，再根據條件取得分頁內容(ROW_NUMBER從1開始) 12345678910111213DECLARE @PageIndex INT = 1, @PageSize INT = 25SELECT * FROM( SELECT *, ROW_NUMBER() OVER (ORDER BY FieldA DESC) as RowId FROM TableA WHERE Conditions) AS vwWHERE RowId BETWEEN (@PageIndex - 1) * @PageSize + 1 AND @PageIndex * @PageSize 方法二 : 使用OFFSET搭配FETCH(SQL Server 2012 開始) OFFSET FETCH OFFSET - FETCH 是 ORDER BY 子句的延伸功能。 123456789FETCH [ [ NEXT | PRIOR | FIRST | LAST | ABSOLUTE &#123; n | @nvar &#125; | RELATIVE &#123; n | @nvar &#125; ] FROM ]&#123; &#123; [ GLOBAL ] cursor_name &#125; | @cursor_variable_name &#125;[ INTO @variable_name [ ,...n ] ] 可以指定跳過的行數，指定要取回的資料列筆數(要從跳過 0 ROW開始) 12345678910DECLARE @PageIndex INT = 1, @PageSize INT = 25SELECT *FROM TableAORDER BY FieldA DESCOFFSET (@PageIndex - 1)*@PageSize ROWSFETCH NEXT @PageSize ROWS ONLY; FETCH 寫法效能比 ROW_NUMBER() 快很多]]></content>
+      <tags>
+        <tag>DB</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Python]With Visual Studio Code]]></title>
+    <url>%2F2018%2F11%2F26%2FPython-With-Visual-Studio-Code%2F</url>
+    <content type="text"><![CDATA[Python是完全物件導向的語言。函式、模組、數字、字串都是物件。並且完全支援繼承、重載、衍生、多重繼承，有益於增強原始碼的複用性(Python2和Python3是不相容的) Python : GCP要使用2.7.X版本 安裝Python 2.7.15 設定環境變數 For Windows10(Windows鍵 + Break –&gt; 進階系統設定 –&gt; 環境變數) 新增 E:\Python27 (根據安裝路徑及版本會有不同，設定完可使用”python”指令) 新增 E:\Python27\Scripts (根據安裝路徑及版本會有不同，設定完可使用”pip”指令) 檢查是否安裝成功，打開CMD，執行下列指令 1python -V 先更新pip 1python -m pip install --upgrade pip 1pip --version 確認目前Python環境下，安裝了哪些套件或是framework 1pip list Visual Studio Code 安裝Visual Studio Code 開啟VSCode : 找個資料夾 –&gt; 按右鍵 –&gt; 選擇Open With Code 安裝Python套件(支援Python2.7,&gt;=3.4) : 選擇左邊Extensions –&gt; 查詢Python –&gt; install –&gt; Reload 新增檔案: 選回Explorer –&gt; 新增資料夾(HelloWorld) –&gt; 新增檔案(Hello.py) 寫Hello Python World –&gt; 下中斷點 –&gt; F5 下指令執行.py 絕對路徑 : 1python F:\Python\HelloWorld\Hello.py 相對路徑 : 1python .\HelloWorld\Hello.py]]></content>
+      <tags>
+        <tag>Python</tag>
+        <tag>Visual Studio Code</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[MSSQL]Merge Syntax]]></title>
+    <url>%2F2018%2F11%2F26%2FMSSQL-Merge-Syntax%2F</url>
+    <content type="text"><![CDATA[MERGE是SQL Server 2008的新語法，根據與源表的連接結果，對目標表執行插入，更新或刪除操作。參考網址 範例 建立範例Table 1234567CREATE TABLE City( ID INTEGER PRIMARY KEY NOT NULL, CityName VARCHAR(100) NOT NULL, StateName VARCHAR(100) NOT NULL)GO 通常我會搭配User Defined Types 一起用，TypeName: “TableName + Table” 1234567891011CREATE TYPE [dbo].[CityTable] AS TABLE ( ID INTEGER PRIMARY KEY NOT NULL, CityName VARCHAR(100) NOT NULL, StateName VARCHAR(100) NOT NULL);GOGRANT EXECUTE ON TYPE::[dbo].[CityTable] TO PUBLIC;GO Merge Insert、Update、Delete SP，根據需求選擇使用，MATCHED Not MATCHED後面也可以加條件 12345678910111213141516171819202122232425262728293031CREATE PROCEDURE [dbo].[NSP_City_Merge] @CityTable CityTable READONLYAS MERGE City AS T -- 目標Table USING @CityTable AS S -- 資料來源 ON T.ID = S.ID -- 判斷條件 WHEN NOT MATCHED THEN -- 也可加條件 INSERT ( ID, CityName, StateName ) VALUES ( S.ID, S.CityName, S.StateName ) WHEN MATCHED THEN -- 也可加條件 UPDATE SET StateName = S.StateName, CityName = S.CityName WHEN NOT MATCHED BY SOURCE THEN -- 也可加條件 DELETE OUTPUT Inserted.*;RETURN 0GOGRANT EXECUTE ON OBJECT::[dbo].[NSP_City_Merge] TO PUBLIC AS [dbo];GO Test 12345678DECLARE @CityTable CityTableINSERT INTO @CityTable VALUES(1, 'Taipei', 'Taiwan'),(2, 'Taichung', 'Taiwan')EXEC NSP_City_Merge @CityTable]]></content>
+      <tags>
+        <tag>DB</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[GCP]Dataflow-Use Templates]]></title>
+    <url>%2F2018%2F11%2F21%2FGCP-DataFlow-Use-Templates%2F</url>
+    <content type="text"><![CDATA[Cloud Dataflow 是一套全面管理化的服務，能夠轉換串流 (即時) 模式和批次 (過往) 模式的資料 異常處理 表單–&gt;Stackdriver錯誤報告 查看是否有DataFlow的錯誤 –&gt; 也可以訂閱異常通知 先到DataFlow將異常的工作關掉 注意：開發環境才可以用 “取消” ，線上環境請用 “排除” 重建DataFlow 到發佈/訂閱 選擇主題匯出到BigQuery，並根據範例輸入BigQuery output table和臨時位置]]></content>
+      <tags>
+        <tag>GCP</tag>
+        <tag>Dataflow</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Advertising]ironSource]]></title>
+    <url>%2F2018%2F11%2F19%2FAdvertising-ironSource%2F</url>
+    <content type="text"><![CDATA[以色列最低調的獨角獸公司ironSource Ad Units Rewarded Video Interstitial Offerwall Banner Ad Network AdColony AdMob AppLovin Chartboost Facebook Tapjoy UnityAds Vungle 整合方式 Offerwall 這種非即時給獎勵的任務牆適合 Server-to-Server Callback APP –看完廣告–&gt; ironSource –CALLback–&gt; WebApi –驗證–&gt; Server –檢查–&gt; AwardServer-to-Server Callback Settings 驗證機制 : Signature Validation、IP ValidationAuthenticating The Commission Event Callback Rewarded Video 即時給獎勵 適合 Client-to-Server APP –看完廣告–&gt; Server –檢查–&gt; Award 取每日營收Monetization Reporting API]]></content>
+      <tags>
+        <tag>Advertising</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[CV]]></title>
+    <url>%2F2018%2F11%2F15%2FCV%2F</url>
+    <content type="text"><![CDATA[基本資料 姓名: 吳家寶 生日: 1984/04/07 Email: chretbow@gmail.com 學歷: 中原大學-電機工程研究所、逢甲大學-自動控制學系 專業領域 Web: Asp.net Mvc(C#), AngularJs, Vue.js, Asp.Net Core Server: Ice, Pub/Sub, DDD DB: MsSql, MySql, Redis, Mongo, Neo4j GCP: BigQuery, Pub/Sub, DataFlow,… DevOps: Jenkins, Octopus, ELK, Grafana Git 廣告串接:Admob, Iron Source 學歷經歷 2008 逢甲大學自動控制學系畢 2010 中原大學電機工程研究所畢 醫學影像處理專長 2014 鼎新電腦/ 系統設計師 銷售點系統(POS)功能規劃、開發、測試、發版、維護(使用C++、C#開發) 銷售點系統(POS)整合至ERP(鼎新TIPTOP) POS客製功能規劃、開發、測試與交付 資料庫維護(MySQL、MS SQL、Oracle、SQLite) 關鍵技術調研(硬體整合、效能優化、架構優化) 客戶上線駐廠支援 管理2~3人 2016 向上國際股份有限公司/ 資深系統工程師 Web：功能規劃、開發、測試、發版、維護 DB：Schema規劃、SP撰寫、效能調教、單元測試 Server：支援功能規劃、開發 DevOps應用: CI, CD 雲端技術應用(GCP)]]></content>
+      <tags>
+        <tag>CV</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Information]Big Data]]></title>
+    <url>%2F2018%2F11%2F03%2FInformation-Big-Data%2F</url>
+    <content type="text"><![CDATA[大數據(巨量資料) 資料庫系統無法在合理時間內進行儲存、運算、處理就稱為大數據。 2012 年 Doug Laney 給予大數據一個全新的定義 “Big data is high volume, high velocity, and/or high variety information assets that require new forms of processing to enable enhanced decision making, insight discovery and process optimization.” 4Vs Data Volume: amount of data 1 Byte = 8 Bits 1 Kilobyte (KB) = 1024 Bytes 1 Megabyte (MB) = 1024 KB 1 Gigabyte (GB) = 1024 MB 1 Terabyte (TB) = 1024 GB 1 Petabyte (PB) = 1024 TB 1 Exabyte (EB) = 1024 PB 1 Zettabyte (ZB) = 1024 EB 1 Yottabyte (YB) = 1024 ZB Data Velocity: speed of data in and out 資料流動是連續且快速 也可認為是”時效性” Data Variety: range of data types and sources 資料來源包羅萬象 簡單劃分:結構化和非結構化 Data Veracity: uncertainty of data 分析過濾有偏差、偽造、異常的部分 大數據四字箴言：「大、快、雜、疑」 Laney, Douglas. “The Importance of ‘Big Data’: A Definition”. Gartner. Retrieved 21 June 2012.]]></content>
+      <tags>
+        <tag>Big Data</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[MSSQL]Log Shipping]]></title>
+    <url>%2F2018%2F11%2F01%2FMSSQL-Log-Shipping%2F</url>
+    <content type="text"><![CDATA[最近幫公司將產線上的帳務資料整合到ERP，讓ERP自動產生財務報表，使用到了MSSQL的Log Shipping，簡單記錄一下。 來源端: GCP雲端VM 目的端: 公司機房受IT保護的VM 由系統自動執行備份資料庫的作業，自動複製備份檔案到另一伺服器上，最後再自動執行資料庫的還原作業，達成資料同步作業，可作為備援用的資料庫。基本的運作流程，可以簡化為三項作業：「備份」、「複製」、「還原」。 必要條件 主要資料庫必須使用完整或大量記錄復原模式。 需安裝 .NET Framework 3.5。 1. 首先要請IT雙向開通以下PORT(通常這是最花時間的XD)，GCP 設定VM防火牆規則 Port 1433 Port 135 Ports 137, 138, 139 , 445 參考網址 2. 設定相同帳號權限 二台資料庫和OS各要建一組一樣的帳號密碼，SQL Server Agent服務會用這組帳號啟動。 共享的資料夾要給這組的帳號讀取寫入的權限否則會造成排程失敗，權限也可以開everyone這樣不容易出問題。 3. 來源端按照步驟設定Log Shipping 主要資料庫進行完整備份(也可以不用) backup database “DBName” to disk =’G:\SQLLogShipping\DBName\FileName.bak’with compression, stats = 10; 將完整備份複製到次要資料庫還原(也可以不用) Options選擇 RESTORE WITH STANDBY Overwirte the existing database (WITH REPLACE) 勾起 4. 主要資料庫設定Log Shipping 點選 backup setting，輸入在主要伺服器上的備份資料夾與對應的本機路徑，路徑二個都要寫本機的路徑並選擇壓縮檔 筆記：Network path 若是主機在同一內部網路可設內部IP，若主機在不同網路可設外部IP 注意：此資料夾一定要讓SQL Server Agent的服務帳號擁有讀取和寫入的權限 5.設定完成後，加入次要伺服務器 連接到你的次要伺服器系統會自行搜尋與主要伺服器相同的名稱。若次要資料庫已還原(做了第3步驟)，在此選擇紅框，若是次要資料庫不存在，則選擇第一個綠框 切換到 Copy Files 的分頁後，輸入次要伺服器上的分享資料夾 注意：此資料夾一定要讓SQL Server Agent的服務帳號擁有讀取和寫入的權限 切換到Restore Transation Log的分頁後，要讓第二台同時也可以進行讀取，所以選擇Sandby mode，並且勾選Disconnect users in the database when restoring backups]]></content>
+      <tags>
+        <tag>DB</tag>
+        <tag>MSSQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[Markdown]Quick Reference]]></title>
+    <url>%2F2018%2F10%2F26%2FMarkdown-Quick-Reference%2F</url>
+    <content type="text"><![CDATA[參考網址]]></content>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[[GCP]Mail Service]]></title>
+    <url>%2F2018%2F10%2F24%2FGCP-Mail-Service%2F</url>
+    <content type="text"><![CDATA[在GCP上建立發送MAIL服務，透過公司自家的SMTP Server 不能使用Standard Email Ports : 25Port 25 is always blocked and cannot be used, even through SMTP relay using G Suite 整合方式:(本次跟IT合作，使用上面方式改587 port) Use port 465, 587 GCP Third-party partners : SendGrid, Mailgun, and Mailjet C# Code12345678910111213141516171819202122232425262728293031323334353637383940//建立MailMessage物件MailMessage mms = new MailMessage()&#123; //指定一位寄信人MailAddress From = new MailAddress(MailFrom), //信件主旨 Subject = MailSub, SubjectEncoding = Encoding.UTF8, //信件內容(自刻HTML) Body = getHtml(), BodyEncoding = Encoding.UTF8, //信件內容 是否採用Html格式 IsBodyHtml = true,&#125;;if (addresses != null)&#123; foreach (string address in addresses) &#123; //信件的收信人(們)address 密件 mms.Bcc.Add(new MailAddress(address)); &#125;&#125;using (SmtpClient client = new SmtpClient(SMTPServer, 587))&#123; //設定你的帳號密碼 client.Credentials = new NetworkCredential(Id, Pwd); //依需求開啟 //client.EnableSsl = true; client.Send(mms); //避免附件被Lock無法異動 if (mms.Attachments != null &amp;&amp; mms.Attachments.Count &gt; 0) &#123; mms.Attachments.Dispose(); &#125; mms.Dispose();&#125;]]></content>
+      <tags>
+        <tag>GCP</tag>
+        <tag>Mail</tag>
+      </tags>
+  </entry>
+</search>

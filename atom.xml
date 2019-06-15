@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Ryan Wu</title>
+  
+  <subtitle>隨手筆記</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-06-15T03:00:03.069Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ryan Wu</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Git]TortoiseGit</title>
+    <link href="http://yoursite.com/2019/06/15/Git-TortoiseGit/"/>
+    <id>http://yoursite.com/2019/06/15/Git-TortoiseGit/</id>
+    <published>2019-06-15T01:36:30.000Z</published>
+    <updated>2019-06-15T03:00:03.069Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;TortoiseGit是用來使用GitHub版本控管功能的工具，下面簡單介紹安裝過程和如何Clone Code。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Docker]Docker for Windows 10</title>
+    <link href="http://yoursite.com/2019/04/29/Docker-Docker-for-Windows-10/"/>
+    <id>http://yoursite.com/2019/04/29/Docker-Docker-for-Windows-10/</id>
+    <published>2019-04-29T01:04:15.000Z</published>
+    <updated>2019-06-15T01:22:07.153Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Docker必須跑在Linux上，若想要在Windows上跑Docker，&lt;br&gt;就要利用Hyper-V跑一個Linux，如此就可以在Windows上跑Docker&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Docker" scheme="http://yoursite.com/tags/Docker/"/>
+    
+      <category term="Windows" scheme="http://yoursite.com/tags/Windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Tools]AutoMapper</title>
+    <link href="http://yoursite.com/2019/04/24/Tools-AutoMapper/"/>
+    <id>http://yoursite.com/2019/04/24/Tools-AutoMapper/</id>
+    <published>2019-04-24T03:37:05.000Z</published>
+    <updated>2019-06-15T01:22:07.158Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;AutoMapper主要用來處理類別間的轉換&lt;br&gt;&lt;a href=&quot;https://docs.automapper.org/en/stable/index.html&quot; title=&quot;https://docs.automapper.org/en/stable/index.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;官方連結&lt;/a&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="AutoMapper" scheme="http://yoursite.com/tags/AutoMapper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[C#]Tuple Class</title>
+    <link href="http://yoursite.com/2019/04/23/C-Tuple-Class/"/>
+    <id>http://yoursite.com/2019/04/23/C-Tuple-Class/</id>
+    <published>2019-04-23T07:58:58.000Z</published>
+    <updated>2019-06-15T01:22:07.151Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;function想要回傳多個值的好用類別&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="C#" scheme="http://yoursite.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Unit Test]Persistent Unit Test</title>
+    <link href="http://yoursite.com/2019/04/23/Unit-Test-Persistent-Unit-Test/"/>
+    <id>http://yoursite.com/2019/04/23/Unit-Test-Persistent-Unit-Test/</id>
+    <published>2019-04-23T03:34:41.000Z</published>
+    <updated>2019-06-15T01:22:07.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;持久層單元測試範例&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Unit Test" scheme="http://yoursite.com/tags/Unit-Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Unit Test]MS Unit Test</title>
+    <link href="http://yoursite.com/2019/04/23/Unit-Test-MS-Unit-Test/"/>
+    <id>http://yoursite.com/2019/04/23/Unit-Test-MS-Unit-Test/</id>
+    <published>2019-04-23T03:34:01.000Z</published>
+    <updated>2019-06-15T01:22:07.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介紹透過Microsoft Visual Studio建立單元測試專案&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Unit Test" scheme="http://yoursite.com/tags/Unit-Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Unit Test]AAA原則</title>
+    <link href="http://yoursite.com/2019/04/23/Unit-Test-AAA%E5%8E%9F%E5%89%87/"/>
+    <id>http://yoursite.com/2019/04/23/Unit-Test-AAA原則/</id>
+    <published>2019-04-23T03:33:34.000Z</published>
+    <updated>2019-06-15T01:22:07.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;簡單介紹單元測試的一些基本原則&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Unit Test" scheme="http://yoursite.com/tags/Unit-Test/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Design Patterns]Publish/Subscribe Pattern</title>
+    <link href="http://yoursite.com/2019/04/22/Design-Patterns-Publish-Subscribe-Pattern/"/>
+    <id>http://yoursite.com/2019/04/22/Design-Patterns-Publish-Subscribe-Pattern/</id>
+    <published>2019-04-22T09:35:50.000Z</published>
+    <updated>2019-06-15T01:22:07.152Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;發佈/訂閱模式 (Publish/Subscribe Pattern)在實務上，&lt;br&gt;通常被指為建立事件驅動(Event-driven)或訊息導向軟體的訊息傳遞模式，&lt;br&gt;適合拿來做不同服務間的訊息傳遞或狀態同步&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Design Patterns" scheme="http://yoursite.com/tags/Design-Patterns/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Design Patterns]Repository Pattern</title>
+    <link href="http://yoursite.com/2019/04/18/Design-Patterns-Repository-Pattern/"/>
+    <id>http://yoursite.com/2019/04/18/Design-Patterns-Repository-Pattern/</id>
+    <published>2019-04-18T06:28:43.000Z</published>
+    <updated>2019-06-15T01:22:07.153Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;應用程式隨著雲端發展、分散式架構和資料庫的多樣性，資料來源不會只有一種，&lt;br&gt;為了整合這麼多種資料儲存類型，可以使用Repository Pattern 來切割DAL和BLL&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Design Patterns" scheme="http://yoursite.com/tags/Design-Patterns/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Tools]IOC控制反轉 &amp; DI依賴注入 &amp; Autofac</title>
+    <link href="http://yoursite.com/2019/04/17/Tools-IOC%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%89-DI%E4%BE%9D%E8%B3%B4%E6%B3%A8%E5%85%A5-Autofac/"/>
+    <id>http://yoursite.com/2019/04/17/Tools-IOC控制反轉-DI依賴注入-Autofac/</id>
+    <published>2019-04-17T10:46:14.000Z</published>
+    <updated>2019-06-15T01:22:07.158Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;IOC(Inversion of Control)控制反轉是物件導向程式設計中的一種設計原則，可以用來減低電腦程式碼之間的耦合度。&lt;br&gt;依賴注入(Dependency Injection)是最常使用的方式。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="IOC" scheme="http://yoursite.com/tags/IOC/"/>
+    
+      <category term="DI" scheme="http://yoursite.com/tags/DI/"/>
+    
+      <category term="Autofac" scheme="http://yoursite.com/tags/Autofac/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Git]Git Flow 開發流程</title>
+    <link href="http://yoursite.com/2019/04/09/Git-Git-Flow-%E9%96%8B%E7%99%BC%E6%B5%81%E7%A8%8B/"/>
+    <id>http://yoursite.com/2019/04/09/Git-Git-Flow-開發流程/</id>
+    <published>2019-04-09T06:38:25.000Z</published>
+    <updated>2019-06-15T01:22:07.154Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;簡單介紹Git Flow開發流程，2010年提出，來源如下:&lt;br&gt;&lt;a href=&quot;http://nvie.com/posts/a-successful-git-branching-model/&quot; title=&quot;參考網址&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;http://nvie.com/posts/a-successful-git-branching-model/&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://yoursite.com/tags/Git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Tools]DB Migration Tool:dbup</title>
+    <link href="http://yoursite.com/2019/03/21/Tools-DB-Migration-Tool-dbup/"/>
+    <id>http://yoursite.com/2019/03/21/Tools-DB-Migration-Tool-dbup/</id>
+    <published>2019-03-21T08:04:46.000Z</published>
+    <updated>2019-06-15T01:22:07.158Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;介紹DB Migration工具: DBUp&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="DB" scheme="http://yoursite.com/tags/DB/"/>
+    
+      <category term="Migration" scheme="http://yoursite.com/tags/Migration/"/>
+    
+      <category term="DBUp" scheme="http://yoursite.com/tags/DBUp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Knowledge]軟體分層</title>
+    <link href="http://yoursite.com/2019/03/21/Knowledge-%E8%BB%9F%E9%AB%94%E5%88%86%E5%B1%A4/"/>
+    <id>http://yoursite.com/2019/03/21/Knowledge-軟體分層/</id>
+    <published>2019-03-21T06:23:49.000Z</published>
+    <updated>2019-06-15T01:22:07.155Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;軟體分層的基本介紹&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Knowledge" scheme="http://yoursite.com/tags/Knowledge/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Azure]AD整合</title>
+    <link href="http://yoursite.com/2019/03/04/Azure-AD%E6%95%B4%E5%90%88/"/>
+    <id>http://yoursite.com/2019/03/04/Azure-AD整合/</id>
+    <published>2019-03-04T07:17:59.000Z</published>
+    <updated>2019-06-15T01:22:07.150Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;WEB整合Azure Active Directory步驟&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Azure" scheme="http://yoursite.com/tags/Azure/"/>
+    
+      <category term="AD" scheme="http://yoursite.com/tags/AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Travel]2018-12-07東京聖誕之旅</title>
+    <link href="http://yoursite.com/2019/01/16/Travel-2018-12-07%E6%9D%B1%E4%BA%AC%E8%81%96%E8%AA%95%E4%B9%8B%E6%97%85/"/>
+    <id>http://yoursite.com/2019/01/16/Travel-2018-12-07東京聖誕之旅/</id>
+    <published>2019-01-16T04:43:49.000Z</published>
+    <updated>2019-06-15T01:22:07.159Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;2018-12-07 ~ 2018-12-12&lt;br&gt;跟太座、女兒 一家三口一起到東京過聖誕的一些旅遊心得和紀錄。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Travel" scheme="http://yoursite.com/tags/Travel/"/>
+    
+      <category term="東京" scheme="http://yoursite.com/tags/%E6%9D%B1%E4%BA%AC/"/>
+    
+      <category term="東京大學" scheme="http://yoursite.com/tags/%E6%9D%B1%E4%BA%AC%E5%A4%A7%E5%AD%B8/"/>
+    
+      <category term="銀杏" scheme="http://yoursite.com/tags/%E9%8A%80%E6%9D%8F/"/>
+    
+      <category term="箱根" scheme="http://yoursite.com/tags/%E7%AE%B1%E6%A0%B9/"/>
+    
+      <category term="泡湯" scheme="http://yoursite.com/tags/%E6%B3%A1%E6%B9%AF/"/>
+    
+      <category term="錦糸町" scheme="http://yoursite.com/tags/%E9%8C%A6%E7%B3%B8%E7%94%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Books]重構-改善既有程式設計-Part2</title>
+    <link href="http://yoursite.com/2019/01/04/Books-%E9%87%8D%E6%A7%8B-%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-Part2/"/>
+    <id>http://yoursite.com/2019/01/04/Books-重構-改善既有程式設計-Part2/</id>
+    <published>2019-01-04T05:36:21.000Z</published>
+    <updated>2019-06-15T01:22:07.151Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;重點整理第二Part&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Books" scheme="http://yoursite.com/tags/Books/"/>
+    
+      <category term="Refactoring" scheme="http://yoursite.com/tags/Refactoring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[Books]重構-改善既有程式設計-Part1</title>
+    <link href="http://yoursite.com/2019/01/03/Books-%E9%87%8D%E6%A7%8B-%E6%94%B9%E5%96%84%E6%97%A2%E6%9C%89%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88-Part1/"/>
+    <id>http://yoursite.com/2019/01/03/Books-重構-改善既有程式設計-Part1/</id>
+    <published>2019-01-03T05:36:06.000Z</published>
+    <updated>2019-06-15T01:22:07.150Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這是一篇重點整理&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Books" scheme="http://yoursite.com/tags/Books/"/>
+    
+      <category term="Refactoring" scheme="http://yoursite.com/tags/Refactoring/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[GCP]Use XShell Connect To GCE</title>
+    <link href="http://yoursite.com/2018/12/14/GCP-Use-XShell-Connect-To-GCE/"/>
+    <id>http://yoursite.com/2018/12/14/GCP-Use-XShell-Connect-To-GCE/</id>
+    <published>2018-12-14T01:46:06.000Z</published>
+    <updated>2019-06-15T01:22:07.154Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;手把手創建Linux GCE，先使用ssh Key登入，幫root設定密碼，順便優化回應慢的問題&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="GCP" scheme="http://yoursite.com/tags/GCP/"/>
+    
+      <category term="GCE" scheme="http://yoursite.com/tags/GCE/"/>
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[MSSQL]Server二三事</title>
+    <link href="http://yoursite.com/2018/12/06/MSSQL-Server%E4%BA%8C%E4%B8%89%E4%BA%8B/"/>
+    <id>http://yoursite.com/2018/12/06/MSSQL-Server二三事/</id>
+    <published>2018-12-06T03:55:00.000Z</published>
+    <updated>2019-06-15T01:22:07.156Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用SSMS(SQL SERVER Management Studio)，說明Server的功能&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="DB" scheme="http://yoursite.com/tags/DB/"/>
+    
+      <category term="MSSQL" scheme="http://yoursite.com/tags/MSSQL/"/>
+    
+      <category term="SSMS" scheme="http://yoursite.com/tags/SSMS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>[MSSQL]分頁</title>
+    <link href="http://yoursite.com/2018/12/04/MSSQL-%E5%88%86%E9%A0%81/"/>
+    <id>http://yoursite.com/2018/12/04/MSSQL-分頁/</id>
+    <published>2018-12-04T07:16:27.000Z</published>
+    <updated>2019-06-15T01:22:07.156Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;筆記一下自己常用的兩個SQL分頁寫法，通常會提供總筆數和分頁內容給使用端&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="DB" scheme="http://yoursite.com/tags/DB/"/>
+    
+      <category term="MSSQL" scheme="http://yoursite.com/tags/MSSQL/"/>
+    
+  </entry>
+  
+</feed>
