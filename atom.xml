@@ -1,20 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Ryan Wu</title>
+  <title>Paul Wu</title>
   
   <subtitle>隨手筆記</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-15T03:00:03.069Z</updated>
+  <updated>2019-06-15T05:18:53.221Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Ryan Wu</name>
+    <name>Paul Wu</name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[Hexo]Hexo+Github快速建立Blog</title>
+    <link href="http://yoursite.com/2019/06/15/Hexo-Hexo-Github%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%8BBlog/"/>
+    <id>http://yoursite.com/2019/06/15/Hexo-Hexo-Github快速建立Blog/</id>
+    <published>2019-06-15T03:25:29.000Z</published>
+    <updated>2019-06-15T05:18:53.221Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;使用Hexo blog框架 + Github 快速架設、管理自己的Blog。&lt;br&gt;Hexo 使用 Markdown 解析文章。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="Github" scheme="http://yoursite.com/tags/Github/"/>
+    
+  </entry>
   
   <entry>
     <title>[Git]TortoiseGit</title>
@@ -391,26 +411,6 @@
       <category term="MSSQL" scheme="http://yoursite.com/tags/MSSQL/"/>
     
       <category term="SSMS" scheme="http://yoursite.com/tags/SSMS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[MSSQL]分頁</title>
-    <link href="http://yoursite.com/2018/12/04/MSSQL-%E5%88%86%E9%A0%81/"/>
-    <id>http://yoursite.com/2018/12/04/MSSQL-分頁/</id>
-    <published>2018-12-04T07:16:27.000Z</published>
-    <updated>2019-06-15T01:22:07.156Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;筆記一下自己常用的兩個SQL分頁寫法，通常會提供總筆數和分頁內容給使用端&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="DB" scheme="http://yoursite.com/tags/DB/"/>
-    
-      <category term="MSSQL" scheme="http://yoursite.com/tags/MSSQL/"/>
     
   </entry>
   
