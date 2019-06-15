@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-06-15T05:18:53.221Z</updated>
+  <updated>2019-06-15T06:03:33.479Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,29 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>[VSCode]Visual Studio Code簡介/安裝</title>
+    <link href="http://yoursite.com/2019/06/15/VSCode-Visual-Studio-Code%E7%B0%A1%E4%BB%8B-%E5%AE%89%E8%A3%9D/"/>
+    <id>http://yoursite.com/2019/06/15/VSCode-Visual-Studio-Code簡介-安裝/</id>
+    <published>2019-06-15T05:34:21.000Z</published>
+    <updated>2019-06-15T06:03:33.479Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Visual Studio Code是一個輕量級但功能強大的源代碼編輯器，可跨OS使用，支援多程式語言，&lt;br&gt;且有各種方便的擴充套件。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Visual Studio Code" scheme="http://yoursite.com/tags/Visual-Studio-Code/"/>
+    
+  </entry>
+  
+  <entry>
     <title>[Hexo]Hexo+Github快速建立Blog</title>
     <link href="http://yoursite.com/2019/06/15/Hexo-Hexo-Github%E5%BF%AB%E9%80%9F%E5%BB%BA%E7%AB%8BBlog/"/>
     <id>http://yoursite.com/2019/06/15/Hexo-Hexo-Github快速建立Blog/</id>
     <published>2019-06-15T03:25:29.000Z</published>
-    <updated>2019-06-15T05:18:53.221Z</updated>
+    <updated>2019-06-15T05:35:02.053Z</updated>
     
     <summary type="html">
     
@@ -389,28 +407,6 @@
       <category term="GCE" scheme="http://yoursite.com/tags/GCE/"/>
     
       <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>[MSSQL]Server二三事</title>
-    <link href="http://yoursite.com/2018/12/06/MSSQL-Server%E4%BA%8C%E4%B8%89%E4%BA%8B/"/>
-    <id>http://yoursite.com/2018/12/06/MSSQL-Server二三事/</id>
-    <published>2018-12-06T03:55:00.000Z</published>
-    <updated>2019-06-15T01:22:07.156Z</updated>
-    
-    <summary type="html">
-    
-      &lt;p&gt;使用SSMS(SQL SERVER Management Studio)，說明Server的功能&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="DB" scheme="http://yoursite.com/tags/DB/"/>
-    
-      <category term="MSSQL" scheme="http://yoursite.com/tags/MSSQL/"/>
-    
-      <category term="SSMS" scheme="http://yoursite.com/tags/SSMS/"/>
     
   </entry>
   
