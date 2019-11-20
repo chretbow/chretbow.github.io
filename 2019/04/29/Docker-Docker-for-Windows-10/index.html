@@ -96,7 +96,7 @@
 <meta property="og:image" content="http://yoursite.com/img/[Docker]Docker%20for%20Windows%2010/005.jpg">
 <meta property="og:image" content="http://yoursite.com/img/[Docker]Docker%20for%20Windows%2010/006.jpg">
 <meta property="og:image" content="http://yoursite.com/img/[Docker]Docker%20for%20Windows%2010/007.jpg">
-<meta property="og:updated_time" content="2019-06-15T01:22:07.153Z">
+<meta property="og:updated_time" content="2019-07-04T01:37:04.936Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Docker]Docker for Windows 10">
 <meta name="twitter:description" content="Docker必須跑在Linux上，若想要在Windows上跑Docker，就要利用Hyper-V跑一個Linux，如此就可以在Windows上跑Docker">
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">字數統計&#58;</span>
                 
                 <span title="字數統計">
-                  303
+                  315
                 </span>
               
 
@@ -417,9 +417,9 @@
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&gt; docker --version<br></code></pre></td></tr></table></figure>
 <p>Docker version 18.09.2, build 6247962</p>
 <ul>
-<li>從 Docker Hub 拉取 hello-world image，並Run容器</li>
+<li>從 Docker Hub 拉取 hello-world image，並Run容器(要先登入才拉的到Image)</li>
 </ul>
-<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&gt; docker pull hello-world<br></code></pre></td></tr></table></figure>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&gt; docker login<br>&gt; docker pull hello-world<br></code></pre></td></tr></table></figure>
 <p>Using default tag: latest<br>latest: Pulling from library/hello-world<br>1b930d010525: Pull complete<br>Digest: sha256:92695bc579f31df7a63da6922075d0666e565ceccad16b59c3374d2cf4e8e50e<br>Status: Downloaded newer image for hello-world:latest</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">&gt; docker run hello-world<br></code></pre></td></tr></table></figure>
 <p>Hello from Docker!<br>This message shows that your installation appears to be working correctly.</p>
@@ -574,7 +574,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">31</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">文章</span>
                 </a>
               </div>
@@ -587,7 +587,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">標籤</span>
                 </a>
               </div>
@@ -634,6 +634,10 @@
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://zongu.github.io/" title="zongu" target="_blank">zongu</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://akoncc.github.io/" title="cc" target="_blank">cc</a>
                   </li>
                 
               </ul>
@@ -690,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">11.9k</span>
+    <span title="Site words total count">14.4k</span>
   
 </div>
 
